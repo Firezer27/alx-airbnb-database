@@ -1,4 +1,4 @@
-# ER Diagram Requirements — AirBnB Clone 
+# 0. Define Entities and Relationships in ER Diagram
 
 ## Objective
 Create an Entity-Relationship Diagram (ERD) for the AirBnB database using the provided database specification. The diagram must use crow's-foot notation and accurately represent entities, attributes, relationships, cardinalities, and mandatory/optional constraints.
