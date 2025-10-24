@@ -1,4 +1,4 @@
-# ER Diagram Requirements — AirBnB Clone (alx-airbnb-database/ERD/requirements.md)
+# ER Diagram Requirements — AirBnB Clone 
 
 ## Objective
 Create an Entity-Relationship Diagram (ERD) for the AirBnB database using the provided database specification. The diagram must use crow's-foot notation and accurately represent entities, attributes, relationships, cardinalities, and mandatory/optional constraints.
