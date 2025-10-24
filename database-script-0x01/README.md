@@ -1,4 +1,4 @@
-#  Airbnb Database Schema
+#  2. Design Database Schema (DDL)
 
 ##  Objective
 This module defines the **database schema** for the Airbnb Clone backend.  
