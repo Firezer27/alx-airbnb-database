@@ -16,3 +16,23 @@ group by
   u.user_id
 order by
   total_bookings desc;
+
+
+-- ==============================================================
+-- 2. Window Function Query: Rank properties by total bookings
+-- ==============================================================
+select
+  p.property_id,
+  p.name,
+  count(b.booking_id) as total_bookings,
+  rank() over( order by count(b.booking_id) desc) as booking_rank
+from 
+  Property as p
+left join
+  Booking as b
+on 
+  p.property_id=b.property_id
+group by 
+  p.property_id,p.name
+order by
+  booking_rank
