@@ -1,20 +1,20 @@
-# ⚡ Query Optimization Report — ALX Airbnb Database
+#  Query Optimization Report — ALX Airbnb Database
 
-## 📘 Overview
+##  Overview
 This document describes the optimization process for a **complex SQL query** that retrieves bookings with user, property, and payment details from the Airbnb database.
 
 The goal is to **reduce execution time**, **minimize resource usage**, and **improve performance** using indexing and query refactoring.
 
 ---
 
-## 🎯 Objective
+##  Objective
 - Retrieve **bookings**, **user details**, **property details**, and **payment details** efficiently.
 - Identify and fix performance bottlenecks.
 - Measure improvement after optimization.
 
 ---
 
-## 🧩 1. Initial Query (Unoptimized)
+##  1. Initial Query (Unoptimized)
 
 ```sql
 SELECT
