@@ -3,18 +3,18 @@
 -- Objective:
 --   Find all properties where the average rating is greater than 4.0
 -- ==============================================================
-Select * 
-from
-  Property As p
-where
-  p.property_id In (
-      Select
+SELECT * 
+FROM
+  Property AS p
+WHERE
+  p.property_id IN (
+      SELECT
          r.property_id
-      from 
-         Review As r
-      group by
+      FROM 
+         Review AS r
+      GROUP BY
          r.property_id
-      having
+      HAVING
          AVG(r.rating) > 4.0
   ) ;
 
@@ -23,15 +23,15 @@ where
 -- Objective:
 --   Find users who have made more than 3 bookings.
 -- ==============================================================
-select * 
-from 
-  User as u
-  where(
-    select
-       count(*)
-    from 
-       Booking as b
-    where 
+SELECT * 
+FROM
+  USER AS u
+  WHERE(
+    SELECT
+       COUNT(*)
+    FROM 
+       Booking AS b
+    WHERE 
        b.user_id = u.user_id
   )>3;
 
