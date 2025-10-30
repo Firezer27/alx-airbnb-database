@@ -4,8 +4,8 @@
 -- The following query retrieves all bookings with user, property, and payment details.
 -- This version uses multiple joins without filters or indexing — slower performance.
 
-EXPLAIN ANALYZE
-SELECT
+EXPLAIN
+SELECT 
     b.booking_id,
     b.start_date,
     b.end_date,
@@ -18,13 +18,16 @@ SELECT
     p.location,
     pay.payment_id,
     pay.amount,
-    pay.payment_method
-FROM
-    Bookings b
-    JOIN Users u ON b.user_id = u.user_id
-    JOIN Properties p ON b.property_id = p.property_id
-    LEFT JOIN Payments pay ON pay.booking_id = b.booking_id;
-
+    pay.payment_status
+FROM Bookings AS b
+JOIN Users AS u 
+    ON b.user_id = u.user_id
+JOIN Properties AS p 
+    ON b.property_id = p.property_id
+JOIN Payments AS pay 
+    ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+AND pay.payment_status = 'completed';
 -- ==============================================================
 -- STEP 2: IDENTIFY PERFORMANCE ISSUES
 -- ==============================================================
