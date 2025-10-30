@@ -11,11 +11,11 @@ where
       Select
          r.property_id
       from 
-         Raview As r
+         Review As r
       group by
          r.property_id
       having
-         AVG(r.rating) > 4.0 
+         AVG(r.rating) > 4.0
   ) ;
 
 -- ==============================================================
@@ -25,7 +25,7 @@ where
 -- ==============================================================
 select * 
 from 
-  Users as u
+  User as u
   where(
     select
        count(*)
