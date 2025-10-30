@@ -1,38 +1,38 @@
 -- ==============================================================
 -- 1. Aggregation Query: Count total bookings made by each user
 -- ==============================================================
-select
+SELECT
   u.user_id,
   u.first_name,
   u.last_name, 
-  count(b.booking_id) as total_bookings
-from 
-  users as u
-left join
-  Booking as b
-on 
+  COUNT(b.booking_id) AS total_bookings
+FROM
+  users AS u
+LEFT JOIN
+  Booking AS b
+ON 
   u.user_id = b.user_id
-group by 
+GROUP BY 
   u.user_id
-order by
-  total_bookings desc;
+ORDER BY
+  total_bookings DESC;
 
 
 -- ==============================================================
 -- 2. Window Function Query: Rank properties by total bookings
 -- ==============================================================
-select
+SELECT
   p.property_id,
   p.name,
-  count(b.booking_id) as total_bookings,
-  rank() over( order by count(b.booking_id) desc) as booking_rank
-from 
-  Property as p
-left join
-  Booking as b
-on 
+  COUNT(b.booking_id) AS total_bookings,
+  rank() over( ORDER BY COUNT(b.booking_id) DESC) AS booking_rank
+FROM
+  Property AS p
+LEFT JOIN
+  Booking AS b
+ON
   p.property_id=b.property_id
-group by 
+GROUP BY 
   p.property_id,p.name
-order by
+ORDER BY
   booking_rank
