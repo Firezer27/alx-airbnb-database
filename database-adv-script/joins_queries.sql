@@ -13,9 +13,19 @@
 -- ==============================================================
 -- 1. INNER JOIN
 -- ==============================================================
-select * from Booking
-inner join User
-on Booking.user_id = User.user_id;
+select
+  b.booking_id,
+  b.property_id,
+  b.user_id,
+  u.first_name,
+  u.last_name,
+  b.start_date,
+  b.end_date,
+  b.status
+from Booking as b
+inner join
+  User as u
+on b.user_id = u.user_id;
 
 -- ==============================================================
 -- 2. LEFT JOIN
