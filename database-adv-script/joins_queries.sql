@@ -1,42 +1,38 @@
--- ==============================================================
--- FILE: joins_queries.sql
--- PROJECT: ALX Airbnb Database
--- AUTHOR: Firezer Bizuwork
--- DESCRIPTION:
---   This script demonstrates SQL JOIN operations:
---     1. INNER JOIN
---     2. LEFT JOIN
---     3. FULL OUTER JOIN
--- ==============================================================
+-- 1️. INNER JOIN: Retrieve all bookings and the respective users who made those bookings
+SELECT 
+    Booking.booking_id,
+    Booking.property_id,
+    Booking.start_date,
+    Booking.end_date,
+    User.user_id,
+    User.first_name,
+    User.last_name,
+    User.email
+FROM Booking
+INNER JOIN User
+ON Booking.user_id = User.user_id;
 
+-- 2️ LEFT JOIN: Retrieve all properties and their reviews, including properties with no reviews
+SELECT 
+    Property.property_id,
+    Property.name,
+    Property.location,
+    Review.review_id,
+    Review.rating,
+    Review.comment
+FROM Property
+LEFT JOIN Review
+ON Property.property_id = Review.property_id;
 
--- ==============================================================
--- 1. INNER JOIN
--- ==============================================================
-select
-  b.booking_id,
-  b.property_id,
-  b.user_id,
-  u.first_name,
-  u.last_name,
-  b.start_date,
-  b.end_date,
-  b.status
-from Booking as b
-inner join
-  User as u
-on b.user_id = u.user_id;
-
--- ==============================================================
--- 2. LEFT JOIN
--- ==============================================================
-select * from Property
-left join Review 
-on Property.property_id = Review.property_id;
-
--- ==============================================================
--- 3. FULL OUTER JOIN
--- ==============================================================
-select * from User
-full outer join Booking
-on  User.user_id = Booking.user_id;
+-- 3️. FULL OUTER JOIN: Retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user
+SELECT 
+    User.user_id,
+    User.first_name,
+    User.last_name,
+    Booking.booking_id,
+    Booking.property_id,
+    Booking.start_date,
+    Booking.end_date
+FROM User
+FULL OUTER JOIN Booking
+ON User.user_id = Booking.user_id;
